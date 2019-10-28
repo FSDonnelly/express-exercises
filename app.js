@@ -31,7 +31,11 @@ app.get('/:cat', (req, res) => {
   } else {
     page = req.query.page;
   }
-  res.send(`<h1>${req.params.cat.toUpperCase()}</h1><h3>Page ${page}</h3>`);
+  res.send(
+    `<h1>${req.params.cat.toUpperCase()}</h1><h3>Page ${page}</h3><h4>${
+      req.query.number
+    }</h4>`
+  );
 });
 
 const PORT = process.env.PORT || 3000;
