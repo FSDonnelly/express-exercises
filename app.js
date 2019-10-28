@@ -9,17 +9,18 @@ let app = express();
 
 // Examples of Route Parameters
 
-app.get('/shop/tv', (req, res) => {
-  res.send('<h4>Category: TV</h4>');
+app.get('/shop/:category/:subcategory', (req, res) => {
+  res.send(`<h4>Category: ${req.params.category}</h4>
+  <h4>Subcategory: ${req.params.subcategory}</h4>`);
 });
 
-app.get('/shop/laptop', (req, res) => {
-  res.send('<h4>Category: Laptop</h4>');
-});
+// app.get('/shop/laptop', (req, res) => {
+//   res.send('<h4>Category: Laptop</h4>');
+// });
 
-app.get('/shop/phone', (req, res) => {
-  res.send('<h4>Category: Phone</h4>');
-});
+// app.get('/shop/phone', (req, res) => {
+//   res.send('<h4>Category: Phone</h4>');
+// });
 
 const PORT = process.env.PORT || 3000;
 
