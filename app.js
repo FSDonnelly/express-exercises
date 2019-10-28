@@ -7,12 +7,12 @@ let app = express();
 
 // app.get('*', (req, res) => res.send(`<h1>404 Page Not Found</h1>`)); //Written below all other get methods
 
-// Examples of Route Parameters
+//---- Examples of Route Parameters ----//
 
-app.get('/shop/:category/:subcategory', (req, res) => {
-  res.send(`<h4>Category: ${req.params.category}</h4>
-  <h4>Subcategory: ${req.params.subcategory}</h4>`);
-});
+// app.get('/shop/:category/:subcategory', (req, res) => {
+//   res.send(`<h4>Category: ${req.params.category}</h4>
+//   <h4>Subcategory: ${req.params.subcategory}</h4>`);
+// });
 
 // app.get('/shop/laptop', (req, res) => {
 //   res.send('<h4>Category: Laptop</h4>');
@@ -21,6 +21,18 @@ app.get('/shop/:category/:subcategory', (req, res) => {
 // app.get('/shop/phone', (req, res) => {
 //   res.send('<h4>Category: Phone</h4>');
 // });
+
+//---- Examples of Query Strings ----//
+
+app.get('/:cat', (req, res) => {
+  let page;
+  if (req.query.page === undefined) {
+    page = 1;
+  } else {
+    page = req.query.page;
+  }
+  res.send(`<h1>${req.params.cat.toUpperCase()}</h1><h3>Page ${page}</h3>`);
+});
 
 const PORT = process.env.PORT || 3000;
 
