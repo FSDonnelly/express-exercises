@@ -3,4 +3,5 @@ function calCost(price, number) {
   console.log(`Cost: $${cost}`);
 }
 
-console.log(module);
+module.exports.calCost = calCost;
+// console.log(module);
