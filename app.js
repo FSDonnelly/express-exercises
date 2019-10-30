@@ -1,11 +1,10 @@
-// let shop = require(`./shop`);
+let mongoose = require('mongoose');
 
-// shop.calCost(5, 3);
-// console.log(shop.myGoods[0]);
-// let math = require(`./math`);
-
-// console.log(math.PI);
-
-// math.sum([math.PI, 10, 8]);
-// math.findMax([math.PI, 10, 8]);
-// math.findMin([math.PI, 10, 8]);
+mongoose
+  .connect(`mongodb://localhost/users`)
+  .then(() => {
+    console.log(`Connected to MongoDB...`);
+  })
+  .catch(err => {
+    console.log(`Something went wrong!!!!@#$%`);
+  });
