@@ -23,3 +23,12 @@ let userSchema = new Schema({
   student: Boolean,
   country: String
 });
+
+let User = mongoose.model('User', userSchema);
+let user1 = new User({
+  login: 'Peter',
+  password: 1234,
+  age: 42
+});
+
+console.log(user1);
