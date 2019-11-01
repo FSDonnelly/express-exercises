@@ -28,15 +28,15 @@ let userSchema = new Schema({
 });
 
 let User = mongoose.model('User', userSchema);
-let user1 = new User({
-  login: 'John',
-  password: '9999',
-  age: 30,
-  student: true,
-  country: 'Canada'
-});
 
-console.log(user1);
-user1.save().then(() => {
-  console.log(`Done saving to DB`);
-});
+getUsers = async () => {
+  let users = await User.find()
+    .where('age')
+    .gt(25) // gt = greater than for mongoose .where()
+    .limit(3)
+    .sort({ age: 1 }); // sort by key 1 ascending -1 descending
+  // .select({ login: true, password: true });
+  console.log(users);
+};
+
+getUsers();
