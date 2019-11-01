@@ -40,4 +40,15 @@ getUsers = async () => {
   console.log(users);
 };
 
+// To find alll mongoose functions goto mongoose.com -> API -> Query
+
 getUsers();
+
+updateUser = async () => {
+  let user = await User.findOne({ login: 'Peter' });
+  user.password = '4444';
+  await user.save();
+  console.log(`User updated`);
+};
+
+updateUser();
