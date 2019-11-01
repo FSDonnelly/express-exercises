@@ -33,6 +33,7 @@ getUsers = async () => {
   let users = await User.find()
     .where('age')
     .gt(25) // gt = greater than for mongoose .where()
+    .lt(35) // lt = less than
     .limit(3)
     .sort({ age: 1 }); // sort by key 1 ascending -1 descending
   // .select({ login: true, password: true });
