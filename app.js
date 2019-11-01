@@ -4,7 +4,8 @@ let Schema = mongoose.Schema;
 mongoose
   .connect(`mongodb://localhost/users`, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(() => {
     console.log(`Connected to MongoDB...`);
@@ -45,10 +46,16 @@ getUsers = async () => {
 getUsers();
 
 updateUser = async () => {
-  let user = await User.findOne({ login: 'Peter' });
-  user.password = '4444';
-  await user.save();
-  console.log(`User updated`);
+  // Option 1
+  // let user = await User.findOne({ login: 'Peter' });
+  // user.password = '4444';
+  // await user.save();
+  // console.log(`User updated`);
+
+  // Option 2
+  User.findOneAndUpdate({ login: 'Peter' }, { password: '7777' }, () => {
+    console.log(`User updated`);
+  });
 };
 
 updateUser();
