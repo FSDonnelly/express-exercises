@@ -2,7 +2,10 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 mongoose
-  .connect(`mongodb://localhost/users`)
+  .connect(`mongodb://localhost/users`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => {
     console.log(`Connected to MongoDB...`);
   })
