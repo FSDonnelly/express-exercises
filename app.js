@@ -28,7 +28,12 @@ let User = mongoose.model('User', userSchema);
 let user1 = new User({
   login: 'Peter',
   password: 1234,
-  age: 42
+  age: 42,
+  student: false,
+  country: 'USA'
 });
 
 console.log(user1);
+user1.save().then(() => {
+  console.log(`Done saving to DB`);
+});
