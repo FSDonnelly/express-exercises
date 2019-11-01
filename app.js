@@ -29,11 +29,11 @@ let userSchema = new Schema({
 
 let User = mongoose.model('User', userSchema);
 let user1 = new User({
-  login: 'Nancy',
-  password: 'uiop',
-  age: 20,
+  login: 'John',
+  password: '9999',
+  age: 30,
   student: true,
-  country: 'Germany'
+  country: 'Canada'
 });
 
 console.log(user1);
