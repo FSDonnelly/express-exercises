@@ -58,4 +58,11 @@ updateUser = async () => {
   });
 };
 
-updateUser();
+// updateUser();
+
+removeUser = async () => {
+  let result = await User.deleteOne({ login: 'Peter' });
+  console.log(result);
+};
+
+removeUser();
