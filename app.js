@@ -83,11 +83,35 @@ let countries = [
   }
 ];
 
-countries.forEach(value => {
-  let country = new Country(value);
-  country.save();
-});
+// countries.forEach(value => {
+//   let country = new Country(value);
+//   country.save();
+// });
 
+getCountries = async () => {
+  let countries = await Country.find()
+    .where('area')
+    .gt(100000)
+    .where('currency')
+    .equals('EUR')
+    .sort({ country: 1 })
+    .select({ country: true });
+  console.log(countries);
+};
+
+getCountries();
+
+updateCountries = async () => {
+  await Country.updateMany({ currency: 'EUR' }, { currency: 'EURO' });
+};
+
+updateCountries();
+
+removeCountries = async () => {
+  await Country.deleteMany({ population: { $gt: 100000000 } });
+};
+
+removeCountries();
 // let userSchema = new Schema({
 //   login: String,
 //   password: {
